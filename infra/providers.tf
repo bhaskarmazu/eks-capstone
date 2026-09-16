@@ -1,0 +1,20 @@
+terraform {
+  required_version = ">= 1.9"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 6.0"
+    }
+  }
+  backend "s3" {
+    bucket       = "terraform-learning-state-054119521068"
+    key          = "eks-capstone/terraform.tfstate"
+    region       = "us-east-2"
+    use_lockfile = true
+    encrypt      = true
+  }
+}
+
+provider "aws" {
+  region = "us-east-2"
+}
